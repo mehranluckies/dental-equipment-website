@@ -1,0 +1,536 @@
+{
+  "nav": {
+    "products": "Products",
+    "solutions": "Solutions",
+    "services": "Services",
+    "caseStudies": "CaseStudies",
+    "resources": "Resources",
+    "about": "About",
+    "contact": "Contact",
+    "requestQuote": "Request Quote",
+    "blog": "Blog"
+  },
+  "hero": {
+    "slides": {
+      "digital": {
+        "badge": "Digital Dentistry",
+        "title": "Advanced Digital Dentistry Starts Here",
+        "description": "Transform your practice with cutting-edge intraoral scanners and CAD/CAM solutions."
+      },
+      "printing": {
+        "badge": "3D Printing",
+        "title": "Precision 3D Printing For Every Clinic",
+        "description": "Fast production, exceptional accuracy, and seamless digital workflows."
+      },
+      "cadcam": {
+        "badge": "CAD/CAM Workflow",
+        "title": "Complete CAD/CAM Ecosystem",
+        "description": "Design, mill, and print restorations with next-generation technology."
+      }
+    },
+    "exploreProducts": "Explore Products",
+    "requestQuote": "Request Quote"
+  },
+  "trust": {
+    "years": "Years of Excellence",
+    "practices": "Dental Practices",
+    "products": "Products Delivered",
+    "countries": "Countries Worldwide"
+  },
+  "mobileNav": {
+    "home": "Home",
+    "products": "Products",
+    "solutions": "Solutions",
+    "caseStudies": "CaseStudies",
+    "more": "More"
+  },
+  "solutionsSection": {
+    "title": "Complete Digital Solutions",
+    "description": "Integrated workflows for every aspect of modern dental practice"
+  },
+  "solutionsPage": {
+    "overview": "Overview",
+    "challenge": "The Challenge",
+    "ourSolution": "Our Solution",
+    "digitalWorkflow": "Digital Workflow",
+    "workflowDescription": "An integrated digital process designed to improve accuracy, speed, and efficiency throughout every stage of treatment.",
+    "keyBenefits": "Key Benefits",
+    "recommendedProducts": "Recommended Products",
+    "recommendedProductsDescription": "Recommended products and equipment for implementing this solution in your practice or laboratory.",
+    "getStarted": "Get Started",
+    "readyTitle": "Ready to Transform Your Workflow?",
+    "readyDescription": "Contact our team to discover how this solution can be tailored to your practice or laboratory needs.",
+    "notFoundTitle": "Solution Not Found",
+    "notFoundDescription": "Unfortunately, the requested solution does not exist or may have been removed.",
+    "backToSolutions": "Back to Solutions"
+  },
+  "solutions": {
+    "digitalDentistry": {
+      "name": "Digital Dentistry",
+      "tagline": "Complete Digital Workflow Solutions",
+      "description": "Transform your practice with a comprehensive digital dentistry ecosystem that streamlines every step from diagnosis to delivery.",
+      "problem": "Traditional analog workflows are time-consuming, prone to errors, and create bottlenecks between practice and laboratory. Physical impressions are uncomfortable for patients and material costs add up quickly.",
+      "solutionApproach": "Our integrated digital dentistry solution eliminates traditional impressions, accelerates turnaround times, and improves accuracy. From intraoral scanning to CAD design and 3D printing or milling, every step is optimized for efficiency and precision.",
+      "workflow": {
+        "scan": {
+          "title": "Scan",
+          "description": "Capture accurate digital impressions in minutes"
+        },
+        "design": {
+          "title": "Design",
+          "description": "AI-assisted CAD design for precise restorations"
+        },
+        "produce": {
+          "title": "Produce",
+          "description": "Print or mill same-day restorations in-house"
+        },
+        "deliver": {
+          "title": "Deliver",
+          "description": "Provide patients with immediate results"
+        }
+      },
+      "benefits": [
+        "Eliminate messy impressions and patient discomfort",
+        "Reduce turnaround time from weeks to hours",
+        "Increase case acceptance with digital visualization",
+        "Improve accuracy and fit of restorations",
+        "Generate new revenue streams with in-house production"
+      ]
+    },
+    "implantology": {
+      "name": "Implantology",
+      "tagline": "Precision Implant Planning & Execution",
+      "description": "Advanced digital solutions for predictable implant placement and superior patient outcomes.",
+      "problem": "Traditional implant planning relies on 2D radiographs and experience, leading to suboptimal positioning, surgical complications, and unpredictable results. Freehand placement increases surgical time and patient risk.",
+      "solutionApproach": "Our implantology solution combines CBCT imaging, intraoral scanning, and advanced planning software to enable precise virtual implant positioning. Printed surgical guides transfer this planning to the operating field with millimeter-level accuracy.",
+      "workflow": {
+        "scanImage": {
+          "title": "Scan & Image",
+          "description": "Combine intraoral scan with CBCT data"
+        },
+        "plan": {
+          "title": "Plan",
+          "description": "Virtually position implants for optimal outcomes"
+        },
+        "guide": {
+          "title": "Guide",
+          "description": "3D print biocompatible surgical guides"
+        },
+        "place": {
+          "title": "Place",
+          "description": "Execute precise guided implant surgery"
+        }
+      },
+      "benefits": [
+        "Predictable implant positioning every time",
+        "Reduce surgical complications and chair time",
+        "Improve patient communication and case acceptance",
+        "Enable minimally invasive flapless surgery",
+        "Seamless prosthetic workflow with scan data"
+      ]
+    },
+    "orthodontics": {
+      "name": "Orthodontics",
+      "tagline": "Digital Orthodontic Solutions",
+      "description": "Modern orthodontic workflows from diagnosis through retention with digital precision.",
+      "problem": "Physical impressions are uncomfortable for patients and distort over time. Traditional appliance fabrication is labor-intensive and time-consuming. Treatment monitoring requires frequent office visits.",
+      "solutionApproach": "Digital orthodontics eliminates impressions, enables in-house appliance fabrication, and facilitates remote monitoring. Scan patients quickly, design appliances digitally, and produce them same-day with 3D printing.",
+      "workflow": {
+        "digitalRecords": {
+          "title": "Digital Records",
+          "description": "Fast, comfortable intraoral scanning"
+        },
+        "treatmentPlanning": {
+          "title": "Treatment Planning",
+          "description": "Virtual setup and appliance design"
+        },
+        "fabrication": {
+          "title": "Fabrication",
+          "description": "3D print retainers, splints, and models"
+        },
+        "monitor": {
+          "title": "Monitor",
+          "description": "Track progress with digital records"
+        }
+      },
+      "benefits": [
+        "Eliminate uncomfortable impression materials",
+        "Produce appliances same-day in your practice",
+        "Create accurate digital treatment records",
+        "Improve patient compliance with better-fitting appliances",
+        "Reduce laboratory costs and dependencies"
+      ]
+    },
+    "prosthetics": {
+      "name": "Prosthetics",
+      "tagline": "Modern Denture & Removable Prosthetics",
+      "description": "Digital solutions for complete and partial dentures with superior fit and aesthetics.",
+      "problem": "Traditional denture fabrication requires multiple appointments, border molding, and manual processing. Results are inconsistent, remakes are common, and patients endure lengthy treatment times.",
+      "solutionApproach": "Digital denture workflows capture accurate functional impressions, enable precise virtual design, and produce dentures with 3D printing for consistent, high-quality results in fewer appointments.",
+      "workflow": {
+        "capture": {
+          "title": "Capture",
+          "description": "Digital impressions and bite registration"
+        },
+        "design": {
+          "title": "Design",
+          "description": "Virtual denture design with tooth libraries"
+        },
+        "tryIn": {
+          "title": "Try-In",
+          "description": "Print try-in denture for patient approval"
+        },
+        "fabricate": {
+          "title": "Fabricate",
+          "description": "Final denture production with 3D printing"
+        }
+      },
+      "benefits": [
+        "Reduce appointments and treatment time",
+        "Consistent, repeatable results",
+        "Easy remakes from digital files",
+        "Eliminate many manual processing steps",
+        "Improved patient comfort and satisfaction"
+      ]
+    },
+    "sameDayDentistry": {
+      "name": "Same-Day Dentistry",
+      "tagline": "Chairside CAD/CAM Restorations",
+      "description": "Deliver permanent restorations in a single appointment with chairside digital workflows.",
+      "problem": "Multi-appointment restorative procedures require temporary restorations, multiple injections, and patient inconvenience. Laboratory turnaround creates scheduling challenges and delays treatment completion.",
+      "solutionApproach": "Chairside CAD/CAM enables scanning, design, and production of permanent restorations in one visit. Patients leave with their final restoration, eliminating temporaries and return appointments.",
+      "workflow": {
+        "prepareScan": {
+          "title": "Prepare & Scan",
+          "description": "Prepare tooth and capture digital impression"
+        },
+        "design": {
+          "title": "Design",
+          "description": "Design restoration with CAD software"
+        },
+        "fabricate": {
+          "title": "Fabricate",
+          "description": "Mill or print restoration chairside"
+        },
+        "deliver": {
+          "title": "Deliver",
+          "description": "Cement and finish in the same appointment"
+        }
+      },
+      "benefits": [
+        "Single-appointment restorations",
+        "No temporaries or second injections",
+        "Immediate patient satisfaction",
+        "Increased practice efficiency",
+        "New profit centers with in-house production"
+      ]
+    },
+    "dentalLaboratory": {
+      "name": "Dental Laboratory",
+      "tagline": "Digital Laboratory Transformation",
+      "description": "Complete digital laboratory solutions for high-volume, high-quality production.",
+      "problem": "Traditional laboratory workflows are labor-intensive and time-consuming. Manual model making, waxing, and casting limit throughput and consistency. Skilled technician shortages impact production capacity.",
+      "solutionApproach": "Digital laboratory solutions replace manual processes with automated scanning, CAD design, and digital production. Increase capacity, improve consistency, and reduce dependence on hard-to-find skilled labor.",
+      "workflow": {
+        "receive": {
+          "title": "Receive",
+          "description": "Accept digital impressions or scan physical models"
+        },
+        "design": {
+          "title": "Design",
+          "description": "CAD design with AI assistance"
+        },
+        "produce": {
+          "title": "Produce",
+          "description": "Mill, print, or combine both for optimal results"
+        },
+        "finish": {
+          "title": "Finish",
+          "description": "Characterize and deliver the final restoration"
+        }
+      },
+      "benefits": [
+        "Dramatically increase production capacity",
+        "Consistent, reproducible quality",
+        "Reduce material waste and costs",
+        "Handle complex full-arch cases with ease",
+        "Scale business without proportional labor increase"
+      ]
+    }
+  },
+  "productionSection": {
+    "title": "Professional Dental Equipment",
+    "description": "Premium devices for every dental workflow",
+    "viewAll": "View All Products"
+  },
+  "whyChooseSection": {
+    "title": "Why Choose DentalTech Pro",
+    "description": "Trusted by dental professionals worldwide",
+    "benefits": {
+      "authenticProducts": "Authentic Products",
+      "authenticProductsDescription": "Genuine equipment backed by manufacturer warranties and certifications",
+      "expertSupport": "Expert Support",
+      "expertSupportDescription": "24/7 technical support from experienced dental technology specialists",
+      "provenQuality": "Proven Quality",
+      "provenQualityDescription": "ISO-certified equipment trusted by thousands of dental professionals",
+      "fastDelivery": "Fast Delivery",
+      "fastDeliveryDescription": "Quick shipping and installation to get your practice running faster",
+      "comprehensiveTraining": "Comprehensive Training",
+      "comprehensiveTrainingDescription": "On-site and online training programs for your entire team",
+      "practiceGrowth": "Practice Growth",
+      "practiceGrowthDescription": "Solutions designed to increase efficiency and profitability"
+    }
+  },
+  "workflowSection": {
+    "title": "Digital Workflow",
+    "description": "From scan to delivery in four simple steps",
+    "steps": {
+      "scan": {
+        "title": "Scan",
+        "description": "Capture accurate digital impressions in minutes"
+      },
+      "design": {
+        "title": "Design",
+        "description": "AI-assisted CAD design for perfect restorations"
+      },
+      "produce": {
+        "title": "Produce",
+        "description": "Print or mill same-day restorations in-house"
+      },
+      "deliver": {
+        "title": "Deliver",
+        "description": "Provide patients with immediate results"
+      }
+    }
+  },
+  "CTASection": {
+    "title": "Transform Your Practice Today",
+    "description": " Discover how digital dentistry solutions can elevate your practice and patient care",
+    "exploreProducts": "Explore Products",
+    "contactUs": "Contact Us"
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "description": "Get in touch with our team to discuss your digital dentistry needs."
+    },
+    "info": {
+      "title": "Get in Touch",
+      "description": "Our team of dental technology experts is ready to help you find the perfect solution for your practice.",
+      "phone": {
+        "title": "Phone"
+      },
+      "email": {
+        "title": "Email"
+      },
+      "address": {
+        "title": "Address",
+        "value": "123 Dental Technology Lane, Innovation City, ST 12345"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "value": "Monday – Friday: 9:00 AM – 6:00 PM"
+      }
+    },
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "company": {
+        "label": "Company",
+        "placeholder": "Your practice or clinic"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your{'@'}email.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+1 (555) 123-4567"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "How can we help?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us more about your needs..."
+      },
+      "submit": "Send Message"
+    },
+    "messages": {
+      "success": "Your message has been sent successfully.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "requestQuotePage": {
+    "hero": {
+      "title": "Request a Quote",
+      "description": "Tell us about your needs and we'll provide a detailed quotation"
+    },
+    "form": {
+      "yourInformation": "Your Information",
+      "productInterest": "Product Interest",
+      "name": {
+        "label": "Name *",
+        "placeholder": "Your name"
+      },
+      "company": {
+        "label": "Company/Practice *",
+        "placeholder": "Your practice name"
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "your{'@'}email.com"
+      },
+      "phone": {
+        "label": "Phone *",
+        "placeholder": "+1 (555) 123-4567"
+      },
+      "country": {
+        "label": "Country *",
+        "placeholder": "Your country"
+      },
+      "products": {
+        "label": "Products of Interest *",
+        "placeholder": "List the products you're interested in..."
+      },
+      "quantity": {
+        "label": "Estimated Quantity",
+        "placeholder": "e.g., 1 scanner, 2 printers"
+      },
+      "timeline": {
+        "label": "Purchase Timeline",
+        "placeholder": "Select timeline",
+        "options": {
+          "immediate": "Immediate (< 1 month)",
+          "oneToThree": "1-3 months",
+          "threeToSix": "3-6 months",
+          "sixPlus": "6+ months"
+        }
+      },
+      "message": {
+        "label": "Additional Information",
+        "placeholder": "Tell us more about your requirements, budget, or any specific questions..."
+      },
+      "submit": "Submit Quote Request",
+      "messages": {
+        "success": "Thank you! Our sales team will contact you within 24 hours with a detailed quotation.",
+        "error": "Something went wrong. Please try again."
+      }
+    },
+    "seo": {
+      "title": "Request a Quote",
+      "description": "Request a detailed quotation for our dental equipment and digital dentistry solutions."
+    }
+  },
+  "footer": {
+    "tagline": "Advanced digital dentistry solutions for modern dental practices and laboratories.",
+    "products": {
+      "title": "Products",
+      "intraoralScanners": "Intraoral Scanners",
+      "labScanners": "Lab Scanners",
+      "printers3d": "3D Printers",
+      "materials": "Materials",
+      "software": "Software"
+    },
+    "solutions": {
+      "title": "Solutions",
+      "digitalDentistry": "Digital Dentistry",
+      "implantology": "Implantology",
+      "orthodontics": "Orthodontics",
+      "prosthetics": "Prosthetics",
+      "sameDayDentistry": "Same-Day Dentistry"
+    },
+    "resources": {
+      "title": "Resources",
+      "caseStudies": "Case Studies",
+      "blog": "Blog",
+      "downloads": "Downloads",
+      "faq": "FAQ"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "contact": "Contact",
+      "services": "Services",
+      "requestQuote": "Request Quote"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© {year} DentalTech Pro. All rights reserved."
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "About DentalTech Pro",
+      "description": "Leading the digital transformation in dentistry since 2014"
+    },
+    "story": {
+      "title": "Our Story",
+      "paragraph1": "Founded in 2014, DentalTech Pro was born from a simple vision: to make advanced digital dentistry technology accessible to dental practices and laboratories worldwide. What started as a small team of dental technology enthusiasts has grown into a trusted partner for thousands of dental professionals across 45 countries.",
+      "paragraph2": "We believe that digital dentistry is not just about technology—it's about transforming patient care, improving clinical outcomes, and empowering dental professionals to deliver their best work. Every product we offer, every solution we design, and every service we provide is guided by this belief."
+    },
+    "mission": {
+      "mission": {
+        "title": "Our Mission",
+        "description": "To empower dental professionals with cutting-edge digital technology that enhances patient care and practice success."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "A world where every dental practice has access to the tools and knowledge needed for digital dentistry excellence."
+      },
+      "values": {
+        "title": "Our Values",
+        "description": "Quality, innovation, integrity, customer success, and continuous education drive everything we do."
+      }
+    },
+    "seo": {
+      "title": "About Us | DentalTech Pro",
+      "description": "Learn about DentalTech Pro, a leading provider of digital dentistry equipment and solutions since 2014."
+    }
+  },
+  "blogPage": {
+    "minRead": "min read",
+    "hero": {
+      "subtitle": "DentalTech Insights",
+      "title": "Blog & Resources",
+      "description": "Expert articles, industry news, and practical guides on digital dentistry."
+    },
+    "readMore": "Read Article",
+    "empty": {
+      "title": "No articles found",
+      "description": "New articles will be published soon."
+    },
+    "categories": {
+      "all": "All"
+    },
+    "article": {
+      "notFound": "Article not found",
+      "backToBlog": "Back to Blog",
+      "tags": "Tags",
+      "articleInfo": "Article Information",
+      "allArticles": "Browse all articles",
+      "minutes": "min read",
+      "ctaTitle": "Looking for professional dental equipment?",
+      "ctaDescription": "Explore our latest digital dentistry products and compare equipment for your clinic.",
+      "viewProducts": "View Products"
+    },
+    "featured": "Featured Article",
+    "search": {
+      "placeholder": "Search articles..."
+    }
+  },
+  "home": {
+    "blog": {
+      "eyebrow": "Latest Articles",
+      "title": "Insights & Resources",
+      "description": "Explore expert articles, dental innovations, product guides, and the latest industry news.",
+      "viewAll": "View all articles",
+      "emptyTitle": "No articles available",
+      "emptyDescription": "Our latest articles will appear here soon."
+    }
+  }
+}

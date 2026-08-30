@@ -1,0 +1,245 @@
+// ==========================================
+// MAIN SCSS ENTRY POINT
+// ==========================================
+//
+// Note:
+// abstracts (variables, mixins) are auto-injected
+// via Vite additionalData.
+//
+// ==========================================
+
+
+// ==========================================
+// BASE
+// ==========================================
+
+@import 'base/reset';
+@import 'base/typography';
+
+
+// ==========================================
+// GLOBAL HTML
+// ==========================================
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth; 
+}
+
+@media (min-width: 1024px) {
+  body {
+    zoom: 0.8;
+  }
+}
+
+
+// ==========================================
+// BODY
+// ==========================================
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+
+  // Smooth font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Default font
+  font-family: 'Inter', sans-serif;
+
+  font-size: 16px;
+  line-height: 1.5;
+
+  background: #ffffff;
+  color: $color-gray-900;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+// ==========================================
+// LTR
+// ==========================================
+
+html[dir='ltr'] {
+
+  body {
+    direction: ltr;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+  }
+
+}
+
+
+// ==========================================
+// RTL
+// ==========================================
+
+html[dir='rtl'] {
+
+  body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Vazirmatn', sans-serif;
+  }
+
+}
+
+
+// ==========================================
+// LINKS
+// ==========================================
+
+a {
+  color: inherit;
+}
+
+
+// ==========================================
+// IMAGES
+// ==========================================
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+// ==========================================
+// BUTTONS / INPUTS
+// ==========================================
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+// ==========================================
+// MOBILE BOTTOM NAV SPACE
+// ==========================================
+//
+// MobileNav is fixed to the bottom of the screen.
+// This prevents page content from being hidden
+// behind the navigation bar.
+//
+
+@media (max-width: 1023px) {
+
+  body {
+    padding-bottom: 88px;
+  }
+
+}
+
+
+// ==========================================
+// DESKTOP
+// ==========================================
+//
+// Desktop Header is fixed at the top.
+// Pages using .main should reserve space
+// for the header.
+//
+
+@media (min-width: 1024px) {
+
+  .main {
+    padding-top: 80px;
+  }
+
+}
+
+
+// ==========================================
+// MOBILE MAIN
+// ==========================================
+//
+// There is no desktop header on mobile,
+// therefore no top padding is required.
+//
+
+@media (max-width: 1023px) {
+
+  .main {
+    padding-top: 0;
+  }
+
+}
+
+
+// ==========================================
+// PAGE TRANSITION
+// ==========================================
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.2s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+
+// ==========================================
+// SELECTION
+// ==========================================
+
+::selection {
+  background: $color-primary-600;
+  color: #ffffff;
+}
+
+
+// ==========================================
+// SCROLLBAR
+// ==========================================
+
+html {
+  scrollbar-width: thin;
+}
+
+
+// ==========================================
+// RTL FORM ELEMENTS
+// ==========================================
+
+html[dir='rtl'] {
+
+  input,
+  textarea,
+  select {
+    text-align: right;
+  }
+
+}
+
+
+// ==========================================
+// LTR FORM ELEMENTS
+// ==========================================
+
+html[dir='ltr'] {
+
+  input,
+  textarea,
+  select {
+    text-align: left;
+  }
+
+}

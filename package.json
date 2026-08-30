@@ -1,0 +1,28 @@
+{
+  "name": "dental-equipment-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --host 0.0.0.0",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^10.6.0",
+    "@pinia/nuxt": "^1.0.2",
+    "@vueuse/core": "^14.4.0",
+    "@vueuse/nuxt": "^14.4.0",
+    "gsap": "^3.15.0",
+    "lucide-vue-next": "^1.0.0",
+    "nuxt": "^3.21.11",
+    "pinia": "^4.0.3",
+    "vazirmatn": "^33.0.3",
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "sass": "^1.102.0"
+  }
+}
