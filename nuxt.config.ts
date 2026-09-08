@@ -33,8 +33,6 @@ export default defineNuxtConfig({
 
     strategy: 'prefix_except_default',
 
-    lazy: true,
-
     langDir: 'locales',
 
     locales: [
@@ -90,7 +88,6 @@ export default defineNuxtConfig({
             @import "${abstractsPath}/_mixins.scss";
           `,
 
-          api: 'legacy',
 
           silenceDeprecations: [
             'legacy-js-api',
