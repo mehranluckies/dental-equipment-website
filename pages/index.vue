@@ -2,20 +2,22 @@
   <div class="home">
     <HeroSection />
     <RevealSection direction="up">
-      <TrustSection />
+      <TrustedSinceSection />
     </RevealSection>
     <RevealSection direction="left">
-      <SolutionsSection />
+      <ProductCategoriesSection />
     </RevealSection>
-    <RevealSection direction="right">
-      <ProductsSection />
+    <RevealSection direction="left">
+      <FeaturedProductsSection />
+    </RevealSection>
+    <RevealSection direction="up">
+      <BrandsSliderSection />
     </RevealSection>
     <RevealSection direction="right">
       <WhyChooseSection />
     </RevealSection>
-
-    <RevealSection direction="left">
-      <FeaturedProductsSection />
+    <RevealSection direction="right">
+      <SolutionsSection />
     </RevealSection>
     <RevealSection direction="up">
       <WorkflowSection />
@@ -37,7 +39,7 @@
       <CTASection />
     </RevealSection>
   </div>
-  
+
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 <template>
     <div class="announcement-bar">
       <img
-        src="/image/announcement/banner.gif"
+        src="/image/announcement/Rectangle.png"
         alt="Announcement"
         class="announcement-bar__image"
       />
@@ -22,7 +22,7 @@
   
     overflow: hidden;
   
-    background: #123B4A;
+    background: $color-primary-500;
   }
   
   .announcement-bar__image {

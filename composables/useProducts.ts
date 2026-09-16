@@ -32,6 +32,9 @@ interface StrapiCategory {
   documentId: string
   name: string
   slug: string
+
+  // Category Icon
+  icon?: StrapiMedia | null
 }
 
 interface StrapiProduct {
@@ -42,12 +45,9 @@ interface StrapiProduct {
 
   shortDescription?: string | null
   description?: string | null
-
   productCode?: string | null
   featured?: boolean
-
   tagline?: string | null
-
   publishedAt?: string | null
   locale?: string
 
@@ -63,12 +63,12 @@ interface StrapiProduct {
   badges?: StrapiBadge[]
 
   relatedProducts?: StrapiProduct[] | null
-
   localizations?: StrapiProduct[]
 }
 
 interface StrapiResponse {
   data: StrapiProduct[]
+
   meta: {
     pagination: {
       page: number
@@ -87,9 +87,10 @@ export const useProducts = () => {
   const loading = ref(false)
   const error = ref<Error | null>(null)
 
-  /**
-   * Convert Strapi media URL to full URL
-   */
+  // --------------------------------------------------
+  // Media URL
+  // --------------------------------------------------
+
   const getMediaUrl = (
     media?: StrapiMedia | null
   ): string => {
@@ -104,106 +105,164 @@ export const useProducts = () => {
     return `${config.public.strapiUrl}${media.url}`
   }
 
-  /**
-   * Convert Strapi product to frontend Product type
-   */
+  // --------------------------------------------------
+  // Mapper
+  // --------------------------------------------------
+
   const mapProduct = (
     item: StrapiProduct
   ): Product => {
     return {
-      // Strapi documentId is more stable for frontend relations
       id: item.documentId,
 
       slug: item.slug,
 
       name: item.name,
 
-      // Old frontend field → new Strapi field
       sku: item.productCode || '',
 
       tagline: item.tagline || '',
 
-      // Short description
       description:
         item.shortDescription || '',
 
-      // Long description
       longDescription:
         item.description || '',
 
-      // Category documentId
       categoryId:
         item.Category?.documentId || '',
 
-      // Main product image
-      heroImage:
-        getMediaUrl(item.coverImage),
+      // ------------------------------------------------
+      // Category
+      // ------------------------------------------------
 
-      // Gallery images
+      category: item.Category
+        ? {
+            id: item.Category.documentId,
+
+            name: item.Category.name,
+
+            slug: item.Category.slug,
+
+            icon: getMediaUrl(
+              item.Category.icon
+            )
+          }
+        : undefined,
+
+      // ------------------------------------------------
+      // Subcategory
+      // ------------------------------------------------
+
+      subcategory: item.Subcategory
+        ? {
+            id:
+              item.Subcategory.documentId,
+
+            name:
+              item.Subcategory.name,
+
+            slug:
+              item.Subcategory.slug
+          }
+        : undefined,
+
+      // ------------------------------------------------
+      // Product Images
+      // ------------------------------------------------
+
+      heroImage:
+        getMediaUrl(
+          item.coverImage
+        ),
+
       galleryImages:
-        item.gallery?.map(image =>
-          getMediaUrl(image)
+        item.gallery?.map(
+          image =>
+            getMediaUrl(image)
         ) || [],
 
-      // Not currently available in Strapi
+      // ------------------------------------------------
+      // Manual
+      // ------------------------------------------------
+
+      manual:
+        getMediaUrl(item.manual),
+
       videoUrl: undefined,
 
-      // Key features
+      // ------------------------------------------------
+      // Key Features
+      // ------------------------------------------------
+
       keyFeatures:
-        item.keyFeatures?.map(feature => ({
-          title: feature.title,
-          description: feature.description,
-        })) || [],
+        item.keyFeatures?.map(
+          feature => ({
+            title:
+              feature.title,
 
-      // Technical specifications
+            description:
+              feature.description
+          })
+        ) || [],
+
+      // ------------------------------------------------
+      // Specifications
+      // ------------------------------------------------
+
       specifications:
-        item.specifications?.map(spec => ({
-          label: spec.label,
+        item.specifications?.map(
+          spec => ({
+            label:
+              spec.label,
 
-          value: spec.unit
-            ? `${spec.value} ${spec.unit}`
-            : spec.value,
+            value: spec.unit
+              ? `${spec.value} ${spec.unit}`
+              : spec.value,
 
-          group: spec.group,
-        })) || [],
+            group:
+              spec.group
+          })
+        ) || [],
 
-      // Not currently available in Strapi
+      // ------------------------------------------------
+      // Other
+      // ------------------------------------------------
+
       applications: [],
 
-      // Price not currently available
       price: undefined,
 
-      // Not currently available in Strapi
       isNew: false,
 
-      // Strapi featured
       isFeatured:
         item.featured || false,
 
-      // Badges
       badges:
         item.badges?.map(
-          badge => badge.label
+          badge =>
+            badge.label
         ) || [],
 
-      // Related products
       relatedProductIds:
         item.relatedProducts?.map(
           product =>
             product.documentId
         ) || [],
 
-      // Published date
       publishedAt:
         item.publishedAt
-          ? new Date(item.publishedAt)
-          : new Date(),
+          ? new Date(
+              item.publishedAt
+            )
+          : new Date()
     }
   }
 
-  /**
-   * Fetch all products
-   */
+  // --------------------------------------------------
+  // Fetch All Products
+  // --------------------------------------------------
+
   const fetchProducts = async () => {
     loading.value = true
     error.value = null
@@ -215,14 +274,21 @@ export const useProducts = () => {
           {
             query: {
               populate: '*',
-              locale: locale.value,
-            },
+
+              locale:
+                locale.value,
+
+              sort: [
+                'publishedAt:desc'
+              ]
+            }
           }
         )
 
       products.value =
-        response.data.map(mapProduct)
-
+        response.data.map(
+          mapProduct
+        )
     } catch (err) {
       error.value =
         err instanceof Error
@@ -237,9 +303,10 @@ export const useProducts = () => {
     }
   }
 
-  /**
-   * Get one product by slug
-   */
+  // --------------------------------------------------
+  // Single Product By Slug
+  // --------------------------------------------------
+
   const getProductBySlug = async (
     slug: string
   ): Promise<Product | null> => {
@@ -252,22 +319,25 @@ export const useProducts = () => {
           `${config.public.strapiUrl}/api/products`,
           {
             query: {
-              'filters[slug][$eq]': slug,
+              locale:
+                locale.value,
+
               populate: '*',
-              locale: locale.value,
-            },
+
+              'filters[slug][$eq]':
+                slug
+            }
           }
         )
 
-      const item =
-        response.data?.[0]
+      const product =
+        response.data[0]
 
-      if (!item) {
+      if (!product) {
         return null
       }
 
-      return mapProduct(item)
-
+      return mapProduct(product)
     } catch (err) {
       error.value =
         err instanceof Error
@@ -282,11 +352,34 @@ export const useProducts = () => {
     }
   }
 
+  // --------------------------------------------------
+  // Related Products
+  // --------------------------------------------------
+
+  const getRelatedProducts = (
+    product: Product
+  ): Product[] => {
+    return products.value.filter(
+      item =>
+        product.relatedProductIds.includes(
+          item.id
+        )
+    )
+  }
+
+  // --------------------------------------------------
+  // Return
+  // --------------------------------------------------
+
   return {
     products,
     loading,
     error,
+
     fetchProducts,
+
     getProductBySlug,
+
+    getRelatedProducts
   }
 }

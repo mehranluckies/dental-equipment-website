@@ -7,7 +7,6 @@
     :aria-disabled="disabled || loading"
   >
     <span v-if="loading" class="btn__spinner"></span>
-
     <span class="btn__content">
       <slot />
     </span>
@@ -21,7 +20,6 @@
     :aria-disabled="disabled || loading"
   >
     <span v-if="loading" class="btn__spinner"></span>
-
     <span class="btn__content">
       <slot />
     </span>
@@ -35,7 +33,6 @@
     type="button"
   >
     <span v-if="loading" class="btn__spinner"></span>
-
     <span class="btn__content">
       <slot />
     </span>
@@ -43,38 +40,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue'
 
 interface Props {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
-  size?: "sm" | "md" | "lg";
-  tag?: "button" | "a" | "NuxtLink";
-  disabled?: boolean;
-  loading?: boolean;
-  iconOnly?: boolean;
-  to?: string;
-  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
+  size?: 'sm' | 'md' | 'lg'
+  tag?: 'button' | 'a' | 'NuxtLink'
+  disabled?: boolean
+  loading?: boolean
+  iconOnly?: boolean
+  to?: string
+  href?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  variant: "primary",
-  size: "md",
-  tag: "button",
+  variant: 'primary',
+  size: 'md',
+  tag: 'button',
   disabled: false,
   loading: false,
   iconOnly: false,
-  to: "",
-  href: "",
-});
+  to: '',
+  href: '',
+})
 
 const buttonClasses = computed(() => [
   `btn--${props.variant}`,
   `btn--${props.size}`,
   {
-    "btn--loading": props.loading,
-    "btn--icon-only": props.iconOnly,
+    'btn--loading': props.loading,
+    'btn--icon-only': props.iconOnly,
   },
-]);
+])
 </script>
 
 <style scoped lang="scss">
@@ -84,132 +81,205 @@ const buttonClasses = computed(() => [
   justify-content: center;
   gap: $space-2;
 
+  min-height: 40px;
+  padding: $space-3 $space-6;
+
+  font-size: $text-base;
   font-weight: $font-semibold;
-
-  border-radius: $radius-lg;
-
-  cursor: pointer;
-
-  transition: all $transition-base;
-
-  position: relative;
+  line-height: $leading-normal;
 
   border: 1px solid transparent;
+  border-radius: $radius-lg;
 
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
   text-decoration: none;
 
-  white-space: nowrap;
+  transition:
+    background-color $transition-base,
+    border-color $transition-base,
+    color $transition-base,
+    box-shadow $transition-base,
+    transform $transition-fast;
 
   &:focus-visible {
     @include focus-visible;
   }
 
   &:disabled,
-  &[aria-disabled="true"] {
+  &[aria-disabled='true'] {
     opacity: 0.5;
     cursor: not-allowed;
+    pointer-events: none;
   }
 
-  /* Variants */
+  // ==========================================
+  // PRIMARY — GOLD
+  // ==========================================
 
   &--primary {
-    background: $color-primary-600;
-    color: white;
-    border-color: $color-primary-600;
+    background: $color-primary-500;
+    color: $color-black;
+    border-color: $color-primary-500;
 
     &:hover:not(:disabled) {
-      background: $color-primary-700;
-      border-color: $color-primary-700;
+      background: $color-primary-hover;
+      border-color: $color-primary-hover;
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active:not(:disabled) {
+      background: $color-primary-active;
+      border-color: $color-primary-active;
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+
+  // ==========================================
+  // SECONDARY — BLACK
+  // ==========================================
+
+  &--secondary {
+    background: $color-black;
+    color: $color-white;
+    border-color: $color-black;
+
+    &:hover:not(:disabled) {
+      background: $color-secondary-700;
+      border-color: $color-secondary-700;
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active:not(:disabled) {
+      background: $color-secondary-800;
+      border-color: $color-secondary-800;
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+
+  // ==========================================
+  // OUTLINE — GOLD
+  // ==========================================
+
+  &--outline {
+    background: transparent;
+    color: $color-primary-600;
+    border-color: $color-primary-500;
+
+    &:hover:not(:disabled) {
+      background: $color-primary-500;
+      color: $color-black;
+      border-color: $color-primary-500;
+    }
+
+    &:active:not(:disabled) {
+      background: $color-primary-600;
+      border-color: $color-primary-600;
+    }
+  }
+
+  // ==========================================
+  // GHOST
+  // ==========================================
+
+  &--ghost {
+    background: transparent;
+    color: $color-text-secondary;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: $color-gray-100;
+      color: $color-text;
+    }
+
+    &:active:not(:disabled) {
+      background: $color-gray-200;
+    }
+  }
+
+  // ==========================================
+  // DANGER
+  // ==========================================
+
+  &--danger {
+    background: $color-error;
+    color: $color-white;
+    border-color: $color-error;
+
+    &:hover:not(:disabled) {
+      background: darken($color-error, 8%);
+      border-color: darken($color-error, 8%);
       transform: translateY(-1px);
       box-shadow: $shadow-md;
     }
 
     &:active:not(:disabled) {
       transform: translateY(0);
+      box-shadow: none;
     }
   }
 
-  &--secondary {
-    background: $color-secondary-500;
-    color: white;
-    border-color: $color-secondary-500;
-
-    &:hover {
-      background: $color-secondary-600;
-      border-color: $color-secondary-600;
-      transform: translateY(-1px);
-      box-shadow: $shadow-md;
-    }
-  }
-
-  &--outline {
-    background: transparent;
-    color: $color-primary-600;
-    border-color: $color-primary-600;
-
-    &:hover {
-      background: $color-primary-600;
-      color: white;
-    }
-  }
-
-  &--ghost {
-    background: transparent;
-    color: $color-gray-700;
-    border-color: transparent;
-
-    &:hover {
-      background: $color-gray-100;
-    }
-  }
-
-  &--danger {
-    background: $color-error;
-    color: white;
-    border-color: $color-error;
-
-    &:hover {
-      background: darken($color-error, 10%);
-      border-color: darken($color-error, 10%);
-    }
-  }
-
-  /* Sizes */
+  // ==========================================
+  // SMALL
+  // ==========================================
 
   &--sm {
+    min-height: 32px;
     padding: $space-2 $space-4;
     font-size: $text-sm;
-    min-height: 32px;
 
     &.btn--icon-only {
-      padding: $space-2;
       width: 32px;
+      padding: $space-2;
     }
   }
+
+  // ==========================================
+  // MEDIUM
+  // ==========================================
 
   &--md {
+    min-height: 40px;
     padding: $space-3 $space-6;
     font-size: $text-base;
-    min-height: 40px;
 
     &.btn--icon-only {
-      padding: $space-3;
       width: 40px;
+      padding: $space-3;
     }
   }
+
+  // ==========================================
+  // LARGE
+  // ==========================================
 
   &--lg {
+    min-height: 48px;
     padding: $space-4 $space-8;
     font-size: $text-lg;
-    min-height: 48px;
 
     &.btn--icon-only {
-      padding: $space-4;
       width: 48px;
+      padding: $space-4;
     }
   }
 
-  /* Loading */
+  // ==========================================
+  // ICON ONLY
+  // ==========================================
+
+  &--icon-only {
+    aspect-ratio: 1;
+  }
+
+  // ==========================================
+  // LOADING
+  // ==========================================
 
   &--loading {
     pointer-events: none;
@@ -219,26 +289,48 @@ const buttonClasses = computed(() => [
     }
   }
 
+  // ==========================================
+  // CONTENT
+  // ==========================================
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+  }
+
+  // ==========================================
+  // SPINNER
+  // ==========================================
+
   &__spinner {
     position: absolute;
 
     width: 16px;
     height: 16px;
 
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: white;
-
-    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-top-color: currentColor;
+    border-radius: $radius-full;
 
     animation: spin 0.6s linear infinite;
   }
 
-  &__content {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2;
+  // White spinner for dark buttons
+  &--secondary,
+  &--danger {
+    .btn__spinner {
+      border-color: rgba(255, 255, 255, 0.3);
+      border-top-color: $color-white;
+    }
   }
 }
+
+
+// ==========================================
+// SPINNER ANIMATION
+// ==========================================
 
 @keyframes spin {
   to {

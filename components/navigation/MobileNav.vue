@@ -1,68 +1,120 @@
+```vue
 <template>
   <Teleport to="body">
-    <nav v-if="isMobile" ref="mobileNavRef" class="mobile-nav" :class="{ 'mobile-nav--rtl': locale === 'fa' }">
-      <!-- Bottom Navigation -->
+    <nav
+      ref="mobileNavRef"
+      class="mobile-nav"
+      :class="{ 'mobile-nav--rtl': locale === 'fa' }"
+    >
       <div class="mobile-nav__inner">
-        <NuxtLink :to="localePath('/')" class="mobile-nav__item" :class="{ 'mobile-nav__item--active': isActive('/') }"
-          @click="closeMore">
+        <NuxtLink
+          :to="localePath('/')"
+          class="mobile-nav__item"
+          :class="{ 'mobile-nav__item--active': isActive('/') }"
+          @click="closeMore"
+        >
           <House :size="22" />
           <span>{{ $t('mobileNav.home') }}</span>
         </NuxtLink>
 
-        <NuxtLink :to="localePath('/products')" class="mobile-nav__item"
-          :class="{ 'mobile-nav__item--active': isActive('/products') }" @click="closeMore">
+        <NuxtLink
+          :to="localePath('/products')"
+          class="mobile-nav__item"
+          :class="{ 'mobile-nav__item--active': isActive('/products') }"
+          @click="closeMore"
+        >
           <Package :size="22" />
           <span>{{ $t('mobileNav.products') }}</span>
         </NuxtLink>
 
-        <NuxtLink :to="localePath('/solutions')" class="mobile-nav__item"
-          :class="{ 'mobile-nav__item--active': isActive('/solutions') }" @click="closeMore">
+        <NuxtLink
+          :to="localePath('/solutions')"
+          class="mobile-nav__item"
+          :class="{ 'mobile-nav__item--active': isActive('/solutions') }"
+          @click="closeMore"
+        >
           <Sparkles :size="22" />
           <span>{{ $t('mobileNav.solutions') }}</span>
         </NuxtLink>
 
-        <NuxtLink :to="localePath('/case-studies')" class="mobile-nav__item"
-          :class="{ 'mobile-nav__item--active': isActive('/case-studies') }" @click="closeMore">
+        <NuxtLink
+          :to="localePath('/case-studies')"
+          class="mobile-nav__item"
+          :class="{
+            'mobile-nav__item--active': isActive('/case-studies')
+          }"
+          @click="closeMore"
+        >
           <BriefcaseBusiness :size="22" />
           <span>{{ $t('mobileNav.caseStudies') }}</span>
         </NuxtLink>
 
-        <button class="mobile-nav__item" :class="{ 'mobile-nav__item--active': moreOpen }" @click="toggleMore">
+        <button
+          type="button"
+          class="mobile-nav__item"
+          :class="{ 'mobile-nav__item--active': moreOpen }"
+          @click="toggleMore"
+        >
           <Menu :size="22" />
           <span>{{ $t('mobileNav.more') }}</span>
         </button>
       </div>
 
-      <!-- More Menu -->
       <Transition name="more-menu">
-        <div v-if="moreOpen" class="mobile-nav__more">
-          <NuxtLink :to="localePath('/services')" class="mobile-nav__more-item" @click="closeMore">
+        <div
+          v-if="moreOpen"
+          class="mobile-nav__more"
+        >
+          <NuxtLink
+            :to="localePath('/services')"
+            class="mobile-nav__more-item"
+            @click="closeMore"
+          >
             <Wrench :size="18" />
             {{ $t('nav.services') }}
           </NuxtLink>
 
-          <NuxtLink :to="localePath('/resources')" class="mobile-nav__more-item" @click="closeMore">
+          <NuxtLink
+            :to="localePath('/resources')"
+            class="mobile-nav__more-item"
+            @click="closeMore"
+          >
             <BookOpen :size="18" />
             {{ $t('nav.resources') }}
           </NuxtLink>
 
-          <NuxtLink :to="localePath('/company/about')" class="mobile-nav__more-item" @click="closeMore">
+          <NuxtLink
+            :to="localePath('/company/about')"
+            class="mobile-nav__more-item"
+            @click="closeMore"
+          >
             <Building2 :size="18" />
             {{ $t('nav.about') }}
           </NuxtLink>
 
-          <NuxtLink :to="localePath('/support/contact')" class="mobile-nav__more-item" @click="closeMore">
+          <NuxtLink
+            :to="localePath('/support/contact')"
+            class="mobile-nav__more-item"
+            @click="closeMore"
+          >
             <Phone :size="18" />
             {{ $t('nav.contact') }}
           </NuxtLink>
 
-          <NuxtLink :to="localePath('/request-quote')" class="mobile-nav__more-item mobile-nav__more-item--quote"
-            @click="closeMore">
+          <NuxtLink
+            :to="localePath('/request-quote')"
+            class="mobile-nav__more-item mobile-nav__more-item--quote"
+            @click="closeMore"
+          >
             <Send :size="18" />
             {{ $t('nav.requestQuote') }}
           </NuxtLink>
 
-          <button class="mobile-nav__more-item" @click="switchLanguage">
+          <button
+            type="button"
+            class="mobile-nav__more-item"
+            @click="switchLanguage"
+          >
             <Languages :size="18" />
             {{ locale === 'en' ? 'فارسی' : 'English' }}
           </button>
@@ -88,24 +140,14 @@ import {
 } from 'lucide-vue-next'
 
 const localePath = useLocalePath()
+
 const { locale, setLocale } = useI18n()
+
 const route = useRoute()
 
 const moreOpen = ref(false)
-const isMobile = ref(false)
+
 const mobileNavRef = ref<HTMLElement | null>(null)
-const handleOutsideClick = (event: MouseEvent) => {
-  if (!moreOpen.value) return
-
-  const target = event.target as Node
-
-  if (
-    mobileNavRef.value &&
-    !mobileNavRef.value.contains(target)
-  ) {
-    closeMore()
-  }
-}
 
 const toggleMore = () => {
   moreOpen.value = !moreOpen.value
@@ -116,7 +158,12 @@ const closeMore = () => {
 }
 
 const switchLanguage = async () => {
-  await setLocale(locale.value === 'en' ? 'fa' : 'en')
+  await setLocale(
+    locale.value === 'en'
+      ? 'fa'
+      : 'en'
+  )
+
   closeMore()
 }
 
@@ -133,18 +180,22 @@ const isActive = (path: string) => {
   )
 }
 
-const checkMobile = () => {
-  isMobile.value = window.innerWidth < 1024
+const handleOutsideClick = (event: MouseEvent) => {
+  if (!moreOpen.value) {
+    return
+  }
+
+  const target = event.target as Node
+
+  if (
+    mobileNavRef.value &&
+    !mobileNavRef.value.contains(target)
+  ) {
+    closeMore()
+  }
 }
 
 onMounted(() => {
-  checkMobile()
-
-  window.addEventListener(
-    'resize',
-    checkMobile
-  )
-
   document.addEventListener(
     'click',
     handleOutsideClick
@@ -152,252 +203,419 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener(
-    'resize',
-    checkMobile
-  )
-
   document.removeEventListener(
     'click',
     handleOutsideClick
   )
 })
 
-watch(() => route.path, closeMore)
+watch(
+  () => route.path,
+  () => {
+    closeMore()
+  }
+)
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .mobile-nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 14px;
-  z-index: 9999;
+  position: fixed !important;
 
-  padding: 0 16px calc(env(safe-area-inset-bottom) + 4px);
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 16px !important;
+
+  width: 100% !important;
+
+  z-index: 99999 !important;
+
+  padding:
+    0
+    $space-4
+    calc(
+      env(safe-area-inset-bottom) +
+      $space-1
+    );
+
+  box-sizing: border-box;
+
   pointer-events: none;
-
-  --brand: #123b4a;
-  --gradient: linear-gradient(135deg, #309dc5 0%, #6be6eb 100%);
-
-  /* =========================
-     Floating Bottom Bar
-  ========================= */
-
-  &__inner {
-    pointer-events: auto;
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 24px;
-
-    padding: 8px;
-
-    box-shadow:
-      0 20px 45px rgba(18, 59, 74, 0.15),
-      0 6px 18px rgba(18, 59, 74, 0.08);
-  }
-
-  /* =========================
-     Navigation Item
-  ========================= */
-
-  &__item {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
-
-    padding: 10px 6px;
-    border-radius: 18px;
-
-    text-decoration: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-
-    color: #6b7280;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    transition: all 0.25s ease;
-
-    svg {
-      transition: all 0.25s ease;
-    }
-
-    span {
-      line-height: 1;
-    }
-
-    &:hover {
-      color: var(--brand);
-
-      svg {
-        transform: translateY(-2px);
-      }
-    }
-  }
-
-  /* =========================
-     Active Item
-  ========================= */
-
-  &__item--active {
-    background: var(--gradient);
-    color: white;
-
-    box-shadow: 0 8px 20px rgba(48, 157, 197, 0.35);
-
-    svg {
-      transform: scale(1.1);
-      stroke-width: 2.4;
-    }
-
-    span {
-      font-weight: 700;
-    }
-  }
-
-  /* =========================
-     More Menu
-  ========================= */
-
-  &__more {
-    pointer-events: auto;
-
-    position: fixed;
-    left: 16px;
-    right: 16px;
-    bottom: 92px;
-
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(24px);
-
-    border-radius: 24px;
-    padding: 16px;
-
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-
-    border: 1px solid rgba(255, 255, 255, 0.8);
-
-    box-shadow:
-      0 24px 60px rgba(18, 59, 74, 0.18),
-      0 8px 20px rgba(18, 59, 74, 0.08);
-  }
-
-  &__more-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 14px;
-
-    border: none;
-    border-radius: 16px;
-
-    background: #f6fbfc;
-
-    color: #36515b;
-
-    text-decoration: none;
-    cursor: pointer;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    transition: all 0.2s ease;
-
-    svg {
-      color: var(--brand);
-      flex-shrink: 0;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
-
-      background: rgba(48, 157, 197, 0.08);
-      color: var(--brand);
-    }
-  }
-
-  &__more-item--quote {
-    background: var(--gradient);
-    color: white;
-
-    svg {
-      color: white;
-    }
-
-    &:hover {
-      transform: translateY(-2px) scale(1.02);
-      filter: brightness(1.05);
-    }
-  }
 }
 
-/* =========================
-   More Menu Animation
-========================= */
+.mobile-nav__inner {
+  pointer-events: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  align-items: center;
+
+  width: 100%;
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+
+  background:
+    $color-black;
+
+  border:
+    1px solid
+    $color-secondary-500;
+
+  border-radius:
+    $radius-2xl;
+
+  padding:
+    $space-2;
+
+  box-shadow:
+    0 20px 45px
+    rgba(0, 0, 0, 0.35),
+    0 6px 18px
+    rgba(0, 0, 0, 0.25);
+}
+
+.mobile-nav__item {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  min-width: 0;
+
+  padding:
+    10px
+    6px;
+
+  border: none;
+
+  border-radius:
+    $radius-xl;
+
+  background: transparent;
+
+  color:
+    $color-white;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size:
+    $text-xs;
+
+  font-weight:
+    $font-semibold;
+
+  transition:
+    color $transition-base,
+    background-color $transition-base,
+    transform $transition-fast;
+}
+
+.mobile-nav__item svg {
+  flex-shrink: 0;
+
+  color:
+    $color-white;
+
+  transition:
+    color $transition-base,
+    transform $transition-base;
+}
+
+.mobile-nav__item span {
+  color:
+    $color-white;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  transition:
+    color $transition-base;
+}
+
+.mobile-nav__item:hover {
+  color:
+    $color-primary-400;
+}
+
+.mobile-nav__item:hover svg {
+  color:
+    $color-primary-400;
+
+  transform:
+    translateY(-2px);
+}
+
+.mobile-nav__item:hover span {
+  color:
+    $color-primary-400;
+}
+
+.mobile-nav__item--active {
+  color:
+    $color-primary-500;
+}
+
+.mobile-nav__item--active svg {
+  color:
+    $color-primary-500;
+
+  transform:
+    scale(1.08);
+
+  stroke-width: 2.4;
+}
+
+.mobile-nav__item--active span {
+  color:
+    $color-primary-500;
+
+  font-weight:
+    $font-bold;
+}
+
+/* ==========================================
+   MORE MENU
+   ========================================== */
+
+.mobile-nav__more {
+  pointer-events: auto;
+
+  position: fixed;
+
+  left:
+    $space-4;
+
+  right:
+    $space-4;
+
+  bottom: 100px;
+
+  z-index: 100000;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap:
+    $space-3;
+
+  padding:
+    $space-4;
+
+  box-sizing: border-box;
+
+  background:
+    $color-black;
+
+  border:
+    1px solid
+    $color-secondary-500;
+
+  border-radius:
+    $radius-2xl;
+
+  box-shadow:
+    0 24px 60px
+    rgba(0, 0, 0, 0.4),
+    0 8px 20px
+    rgba(0, 0, 0, 0.25);
+}
+
+.mobile-nav__more-item {
+  display: flex;
+
+  align-items: center;
+
+  gap:
+    $space-3;
+
+  min-width: 0;
+
+  padding:
+    $space-3;
+
+  border: none;
+
+  border-radius:
+    $radius-lg;
+
+  background:
+    $color-secondary-700;
+
+  color:
+    $color-white;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size:
+    $text-sm;
+
+  font-weight:
+    $font-semibold;
+
+  transition:
+    transform $transition-fast,
+    background-color $transition-base,
+    color $transition-base;
+}
+
+.mobile-nav__more-item svg {
+  flex-shrink: 0;
+
+  color:
+    $color-primary-500;
+}
+
+.mobile-nav__more-item:hover {
+  transform:
+    translateY(-2px);
+
+  background:
+    $color-secondary-600;
+
+  color:
+    $color-primary-400;
+}
+
+.mobile-nav__more-item--quote {
+  background:
+    $color-primary-500;
+
+  color:
+    $color-black;
+}
+
+.mobile-nav__more-item--quote svg {
+  color:
+    $color-black;
+}
+
+.mobile-nav__more-item--quote:hover {
+  background:
+    $color-primary-600;
+
+  color:
+    $color-black;
+}
+
+/* ==========================================
+   MORE MENU ANIMATION
+   ========================================== */
 
 .more-menu-enter-active,
 .more-menu-leave-active {
-  transition: all 0.25s ease;
+  transition:
+    opacity $transition-base,
+    transform $transition-base;
 }
 
 .more-menu-enter-from,
 .more-menu-leave-to {
   opacity: 0;
-  transform: translateY(20px) scale(0.96);
+
+  transform:
+    translateY(20px)
+    scale(0.96);
 }
 
 .more-menu-enter-to,
 .more-menu-leave-from {
   opacity: 1;
-  transform: translateY(0) scale(1);
+
+  transform:
+    translateY(0)
+    scale(1);
 }
 
-/* =========================
+/* ==========================================
    RTL
-========================= */
+   ========================================== */
 
 .mobile-nav--rtl {
   direction: rtl;
-
-  .mobile-nav__inner {
-    direction: rtl;
-  }
-
-  .mobile-nav__more {
-    direction: rtl;
-  }
-
-  .mobile-nav__more-item {
-    text-align: right;
-  }
 }
 
-/* =========================
-   Hide on Desktop
-========================= */
+.mobile-nav--rtl
+.mobile-nav__inner {
+  direction: rtl;
+}
+
+.mobile-nav--rtl
+.mobile-nav__more {
+  direction: rtl;
+}
+
+.mobile-nav--rtl
+.mobile-nav__more-item {
+  text-align: right;
+}
+
+/* ==========================================
+   DESKTOP
+   ========================================== */
 
 @media (min-width: 1024px) {
   .mobile-nav {
-    display: none;
+    display: none !important;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+   ========================================== */
+
+@media (max-width: 380px) {
+  .mobile-nav {
+    padding-left:
+      $space-2;
+
+    padding-right:
+      $space-2;
+  }
+
+  .mobile-nav__inner {
+    padding:
+      $space-1;
+  }
+
+  .mobile-nav__item {
+    padding:
+      9px
+      3px;
+
+    font-size:
+      0.68rem;
+  }
+
+  .mobile-nav__more {
+    left:
+      $space-2;
+
+    right:
+      $space-2;
   }
 }
 </style>
+```
