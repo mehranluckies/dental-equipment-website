@@ -532,5 +532,92 @@
       "emptyTitle": "No articles available",
       "emptyDescription": "Our latest articles will appear here soon."
     }
+  },
+  "productDetail": {
+    "breadcrumb": {
+      "products": "Products"
+    },
+    "productCode": "Product Code",
+    "requestQuote": "Request Quote",
+    "contactSales": "Contact Sales",
+    "productManual": "Product Manual",
+    "viewDownloadPdf": "View / Download PDF",
+    "shareProduct": "Share this product",
+    "share": "Share",
+    "copied": "Copied",
+    "keyFeatures": "Key Features",
+    "technicalSpecifications": "Technical Specifications",
+    "productOverview": "Product Overview",
+    "relatedProducts": "Related Products",
+    "loading": "Loading product...",
+    "noImage": "No image available",
+    "notFound": {
+      "title": "Product Not Found",
+      "description": "The product you're looking for could not be found.",
+      "backToProducts": "Back to Products"
+    }
+  },
+  "productCategory": {
+    "eyebrow": "Product Category",
+    "products": "Products",
+    "description": "Explore our professional dental equipment and solutions.",
+    "defaultDescription": "Browse our professional dental equipment.",
+    "allProducts": "All Products",
+    "loading": "Loading category...",
+    "loadingProducts": "Loading products...",
+    "backToProducts": "Back to Products",
+    "notFound": {
+      "title": "Category Not Found",
+      "description": "The category you're looking for could not be found."
+    },
+    "empty": {
+      "title": "No Products Found",
+      "description": "There are currently no products in this category."
+    },
+    "breadcrumb": {
+      "products": "Products"
+    }
+  },
+  "productsPage": {
+    "eyebrow": "Our Products",
+    "title": "Professional Dental Equipment",
+    "description": "Explore our complete range of professional dental equipment and digital dentistry solutions.",
+    "category": "Product Category",
+    "products": "products",
+    "loading": "Loading products...",
+    "error": "Failed to load products.",
+    "empty": {
+      "title": "No Products Found",
+      "description": "Our product categories will appear here soon."
+    }
+  },
+  "homeTrust": {
+    "stats": {
+      "yearsExperience": "Years Experience",
+      "since": "Since",
+      "productsImported": "Products Imported",
+      "distributionPartners": "Distribution Partners"
+    }
+  },
+  "homeCategories": {
+    "eyebrow": "Product Categories",
+    "title": "Dental Equipment & Solutions",
+    "description": "A comprehensive range of professional dental equipment and materials for distributors, clinics, and dental professionals.",
+    "viewAll": "View All Products",
+    "productCount": "{count} products",
+    "empty": "No categories available."
+  },
+  "homeFeaturedProducts": {
+    "eyebrow": "Featured Products",
+    "title": "Our Featured Products",
+    "description": "A selection of professional dental equipment and products from trusted global brands.",
+    "viewAll": "View All Products"
+  },
+  "homeBrands": {
+    "eyebrow": "Trusted Brands",
+    "title": "Partnering with Global Brands",
+    "description": "We supply dental equipment and products from trusted and recognized global brands.",
+    "previous": "Previous brands",
+    "next": "Next brands"
   }
 }

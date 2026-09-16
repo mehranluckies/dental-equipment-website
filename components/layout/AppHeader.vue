@@ -1,81 +1,95 @@
+```vue
 <template>
-  <header class="header" :class="{ 'header--scrolled': isScrolled }" @mouseleave="closeMega">
-    <!-- ==========================================
-         ANNOUNCEMENT BAR
-    =========================================== -->
+  <header
+    class="header"
+    :class="{ 'header--scrolled': isScrolled }"
+    @mouseleave="closeMega"
+  >
     <AnnouncementBar />
 
-    <!-- ==========================================
-         DESKTOP HEADER
-    =========================================== -->
+    <!-- Desktop Header -->
     <div class="header__desktop">
       <Container>
         <div class="header__inner">
-
           <!-- Logo -->
-          <NuxtLink :to="localePath('/')" class="header__logo">
+          <NuxtLink
+            :to="localePath('/')"
+            class="header__logo"
+          >
             <span class="logo">
               DentalTech Pro
             </span>
           </NuxtLink>
 
           <!-- Navigation -->
-          <nav class="header__nav" aria-label="Main navigation">
-            <NuxtLink v-for="item in navItems" :key="item.path" :to="localePath(item.path)" class="header__link" :class="{
-              'header__link--has-mega': item.hasMega
-            }" @mouseenter="
+          <nav
+            class="header__nav"
+            aria-label="Main navigation"
+          >
+            <NuxtLink
+              v-for="item in navItems"
+              :key="item.path"
+              :to="localePath(item.path)"
+              class="header__link"
+              :class="{
+                'header__link--has-mega': item.hasMega
+              }"
+              @mouseenter="
                 item.hasMega
                   ? showMega(item.key)
                   : closeMega()
-                " @click="closeMega">
+              "
+              @click="closeMega"
+            >
               {{ $t(item.label) }}
             </NuxtLink>
           </nav>
 
           <!-- Actions -->
           <div class="header__actions">
-
-            <!-- Contact -->
-            <Button variant="outline" size="sm" tag="NuxtLink" :to="localePath('/support/contact')">
+            <Button
+              variant="outline"
+              size="sm"
+              tag="NuxtLink"
+              :to="localePath('/support/contact')"
+            >
               {{ $t('nav.contact') }}
             </Button>
 
-            <!-- Request Quote -->
-            <Button size="sm" tag="NuxtLink" :to="localePath('/request-quote')">
+            <Button
+              size="sm"
+              tag="NuxtLink"
+              :to="localePath('/request-quote')"
+            >
               {{ $t('nav.requestQuote') }}
             </Button>
 
-            <!-- Language -->
-            <Button variant="ghost" size="sm" @click="switchLanguage">
+            <Button
+              variant="ghost"
+              size="sm"
+              @click="switchLanguage"
+            >
               {{ locale === 'en' ? 'فارسی' : 'English' }}
             </Button>
-
           </div>
         </div>
       </Container>
 
-      <!-- ========================================
-           PRODUCT MEGA MENU
-      ========================================= -->
+      <!-- Product Mega Menu -->
       <Transition name="mega-menu">
-        <ProductMegaMenu v-if="megaMenu === 'products'" @close="closeMega" />
+        <ProductMegaMenu
+          v-if="megaMenu === 'products'"
+          @close="closeMega"
+        />
       </Transition>
     </div>
 
-    <!-- ==========================================
-         MOBILE BOTTOM NAVIGATION
-    =========================================== -->
+    <!-- Mobile Navigation -->
     <MobileNav />
   </header>
 </template>
 
-
 <script setup lang="ts">
-
-/* ==========================================
-   i18n
-========================================== */
-
 const localePath = useLocalePath()
 
 const {
@@ -83,9 +97,8 @@ const {
   setLocale
 } = useI18n()
 
-
 /* ==========================================
-   Language
+   LANGUAGE
 ========================================== */
 
 const switchLanguage = async () => {
@@ -96,13 +109,12 @@ const switchLanguage = async () => {
   )
 }
 
-
 /* ==========================================
-   Navigation
+   NAVIGATION
 ========================================== */
 
 const navItems = [
-  { 
+  {
     label: 'nav.products',
     path: '/products',
     key: 'products',
@@ -146,18 +158,16 @@ const navItems = [
   }
 ]
 
-
 /* ==========================================
-   Header State
+   STATE
 ========================================== */
 
 const isScrolled = ref(false)
 
 const megaMenu = ref<string | null>(null)
 
-
 /* ==========================================
-   Mega Menu
+   MEGA MENU
 ========================================== */
 
 const showMega = (key: string) => {
@@ -168,24 +178,25 @@ const closeMega = () => {
   megaMenu.value = null
 }
 
-
 /* ==========================================
-   Scroll
+   SCROLL
 ========================================== */
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 20
+  isScrolled.value = window.scrollY > 10
 }
 
-
 onMounted(() => {
+  handleScroll()
+
   window.addEventListener(
     'scroll',
     handleScroll,
-    { passive: true }
+    {
+      passive: true
+    }
   )
 })
-
 
 onUnmounted(() => {
   window.removeEventListener(
@@ -193,9 +204,7 @@ onUnmounted(() => {
     handleScroll
   )
 })
-
 </script>
-
 
 <style scoped lang="scss">
 /* ==========================================
@@ -204,9 +213,9 @@ onUnmounted(() => {
 
 .header {
   position: relative;
-  z-index: 100;
+  z-index: 1000;
+  width: 100%;
 }
-
 
 /* ==========================================
    DESKTOP HEADER
@@ -215,211 +224,213 @@ onUnmounted(() => {
 .header__desktop {
   position: fixed;
 
-  /*
-   * AnnouncementBar = 35px
-   * Header starts below it
-   */
   top: 35px;
-
   left: 0;
   right: 0;
 
-  z-index: 100;
+  z-index: 1000;
 
-  background: rgba(255,
-      255,
-      255,
-      0.95);
+  width: 100%;
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(
+    10,
+    10,
+    10,
+    0.98
+  );
+
+  border-bottom: 1px solid
+    rgba(
+      234,
+      162,
+      33,
+      0.22
+    );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   transition:
-    box-shadow $transition-base;
+    box-shadow $transition-base,
+    border-color $transition-base;
 }
 
-
 /* ==========================================
-   SCROLLED
+   SCROLLED HEADER
 ========================================== */
 
 .header--scrolled {
-
   .header__desktop {
-    box-shadow: $shadow-md;
+    box-shadow:
+      0 8px 30px
+      rgba(0, 0, 0, 0.35);
+
+    border-bottom-color:
+      rgba(
+        234,
+        162,
+        33,
+        0.38
+      );
   }
-
 }
-
 
 /* ==========================================
    INNER
 ========================================== */
 
 .header__inner {
-
   display: flex;
-
   align-items: center;
-
-  gap: $space-12;
 
   min-height: 72px;
 
   padding-block: $space-4;
 
+  gap: $space-12;
 }
-
 
 /* ==========================================
    LOGO
 ========================================== */
 
 .header__logo {
-
   flex-shrink: 0;
 
   text-decoration: none;
-
-  .logo {
-
-    display: block;
-
-    font-size: $text-xl;
-
-    font-weight: $font-bold;
-
-    color: #123B4A;
-
-    letter-spacing: -0.02em;
-
-    white-space: nowrap;
-
-  }
-
 }
 
+.logo {
+  display: block;
+
+  color: $color-primary-500;
+
+  font-size: $text-xl;
+  font-weight: $font-bold;
+
+  letter-spacing: -0.02em;
+
+  white-space: nowrap;
+
+  transition:
+    color $transition-fast;
+}
+
+.header__logo:hover {
+  .logo {
+    color: $color-primary-400;
+  }
+}
 
 /* ==========================================
    NAVIGATION
 ========================================== */
 
 .header__nav {
-
   display: flex;
-
   align-items: center;
-
-  gap: $space-8;
 
   flex: 1;
 
+  gap: $space-8;
 }
 
-
 /* ==========================================
-   NAVIGATION LINK
+   NAV LINK
 ========================================== */
 
 .header__link {
-
   position: relative;
 
   display: inline-flex;
-
   align-items: center;
 
-  font-size: $text-base;
+  color: $color-gray-300;
 
+  font-size: $text-sm;
   font-weight: $font-medium;
-
-  color: $color-gray-700;
-
-  text-decoration: none;
 
   white-space: nowrap;
 
   transition:
     color $transition-fast;
-
 }
-
 
 /* Hover */
 
 .header__link:hover {
-  color: #123B4A;
+  color: $color-primary-500;
 }
-
 
 /* Active */
 
 .header__link.router-link-active {
-
-  color: #123B4A;
-
-  font-weight: $font-semibold;
-
+  color: $color-primary-500;
 }
 
+/* Active underline */
+
+.header__link.router-link-active::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -8px;
+
+  height: 2px;
+
+  background: $color-primary-500;
+
+  border-radius: $radius-full;
+}
 
 /* ==========================================
    ACTIONS
 ========================================== */
 
 .header__actions {
-
   display: flex;
-
   align-items: center;
-
-  gap: $space-3;
 
   flex-shrink: 0;
 
+  gap: $space-3;
 }
 
-
 /* ==========================================
-   MEGA MENU
+   MEGA MENU TRANSITION
 ========================================== */
 
 .mega-menu-enter-active,
 .mega-menu-leave-active {
-
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
-
 }
 
 .mega-menu-enter-from,
 .mega-menu-leave-to {
-
   opacity: 0;
 
   transform:
     translateY(-10px);
-
 }
 
 .mega-menu-enter-to,
 .mega-menu-leave-from {
-
   opacity: 1;
 
   transform:
     translateY(0);
-
 }
-
 
 /* ==========================================
    RTL
 ========================================== */
 
 :global(html[dir='rtl']) {
-
   .header__inner {
     direction: rtl;
   }
@@ -432,19 +443,17 @@ onUnmounted(() => {
     direction: rtl;
   }
 
-  .header__link {
-    letter-spacing: 0;
+  .header__link.router-link-active::after {
+    left: 0;
+    right: 0;
   }
-
 }
-
 
 /* ==========================================
    LTR
 ========================================== */
 
 :global(html[dir='ltr']) {
-
   .header__inner {
     direction: ltr;
   }
@@ -456,58 +465,35 @@ onUnmounted(() => {
   .header__actions {
     direction: ltr;
   }
-
 }
-
 
 /* ==========================================
    MOBILE
 ========================================== */
 
 @media (max-width: 1023px) {
-
-  /*
-   * Desktop Header completely disappears.
-   *
-   * AnnouncementBar remains visible.
-   * MobileNav remains visible at bottom.
-   */
-
   .header {
-
-    position: static;
-
+    position: relative;
     width: 100%;
-
-    height: 35px;
-
     margin: 0;
-
     padding: 0;
-
   }
-
 
   .header__desktop {
-
     display: none !important;
-
   }
-
 }
-
 
 /* ==========================================
    DESKTOP
 ========================================== */
 
 @media (min-width: 1024px) {
-
   .header__desktop {
-
     display: block;
-
   }
-
 }
 </style>
+```
+
+این نسخه از نظر **طراحی Header همان Black & Gold قبلی** است؛ من عمداً `height: 35px` و `position: static` را هم وارد نکردم، چون آن‌ها تغییرات جدید بودند و در نسخه قبلی وجود نداشتند.
